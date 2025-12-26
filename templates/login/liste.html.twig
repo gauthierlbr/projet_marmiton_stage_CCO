@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title "liste des utilisateurs"%}
+
+{%block body %}
+
+    <h1>Voici la liste de tous les utilisateurs</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Email</th>
+    <th>Prenom</th>
+    <th>Nom</th>
+    <th>Date de naissance</th>
+    <th>Ville</th>
+    <th>Login</th>
+    <th>Mot de passe</th>
+    <th>Modifier</th>
+    <th>Supprimer</th>
+  </tr>
+    {% for elements in liste %}
+        <tr>
+        <td>{{ elements.id}}</td>
+        <td>{{ elements.email}}</td>
+        <td>{{ elements.prenom}}</td>
+        <td>{{ elements.nom}}</td>
+        <td>{{ elements.dateNaissance|date("m/d/Y") }}</td>
+        <td>{{ elements.ville}}</td>
+        <td>{{ elements.login}}</td>
+        <td>{{ elements.motdepasse}}</td>
+        <td><a href="modifier?Id={{elements.id}}">modifier</a></td>
+        <td><a href="?Id={{elements.id}}&action=delete">Supprimer</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+<a href="create">Créer un compte</a>
+
+
+{% endblock %}
